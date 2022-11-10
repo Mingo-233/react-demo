@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="app2"></div>
+  <div id="app3"></div>
+  <script src="old/react.development.js"></script>
+  <script src="old/react-dom.development.js"></script>
+  <script src="old/babel.min.js"></script>
+  <script src="old/prop-types.js"></script>
+  <script type="text/babel">
+
+    class Acomponent extends React.Component {
+      state = {
+        name: '小a',
+      }
+      changeName = () => {
+        this.setState({ name: '大啊啊A' })
+      }
+      render() {
+        return (
+          <div>
+            <p>this is a </p>
+            <button onClick={this.changeName}>change</button>
+            <Bcomponent name={this.state.name}/>
+          </div>
+        )
+      }
+    }
+    class Bcomponent extends React.Component {
+      componentWillReceiveProps(props){
+				console.log('B---componentWillReceiveProps',props);
+
+      }
+      render() {
+        return (
+          <div>
+            <p>this is b name{this.props.name}</p>
+          </div>
+
+        )
+      }
+    }
+    ReactDOM.render(<Acomponent />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>

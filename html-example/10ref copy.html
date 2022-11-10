@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="app"></div>
+	<div id="app2"></div>
+	<div id="app3"></div>
+	<script src="old/react.development.js"></script>
+	<script src="old/react-dom.development.js"></script>
+	<script src="old/babel.min.js"></script>
+	<script src="old/prop-types.js"></script>
+	<script type="text/babel">
+		class Mycom extends React.Component {
+			state = { isHot: false }
+			render() {
+				const { isHot } = this.state
+
+				return (
+					<div>
+						<h2>今天天气很{isHot ? '炎热' : '凉爽'}</h2>
+
+						{/*<input type="text" ref={(node)=>this.input1 = node}/>*/}
+						<input type="text" ref={this.saveInput} />
+						<button onClick={this.showInfo}>show</button>
+						<button onClick={this.change}>change</button>
+					</div>
+				)
+			}
+			showInfo = () => {
+				const { input1 } = this
+				alert(input1.value)
+			}
+			change = () => {
+				const { isHot } = this.state
+				this.setState({ isHot: !isHot })
+			}
+			saveInput = (node) => {
+				console.log('aaa');
+				console.log(node);
+				this.input1 = node
+			}
+		}
+		ReactDOM.render(<Mycom />, document.getElementById('app'))
+	</script>
+</body>
+
+</html>

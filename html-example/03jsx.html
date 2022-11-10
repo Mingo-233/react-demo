@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="app2"></div>
+  <script src="old/react.development.js"></script>
+  <script src="old/react-dom.development.js"></script>
+  <script src="old/babel.min.js"></script>
+  <script type="text/babel">
+    let word = 'title'
+    const vdom = (
+      <div>
+        <h1 className="{{word}}">hello react {word}</h1>
+        <span style={{ color: 'red', fontSize: 40 }}>this is span</span>
+        <hr />
+      </div>
+    )
+    ReactDOM.render(vdom, document.querySelector('#app'))
+    //练习内容
+
+    let title = '前端js框架列表'
+		const data = ['Angular','React','Vue']
+    const vdom1 = (
+      <div>
+        <h1>{title}</h1>
+        <ul>
+          {data.map((item,i)=>{
+            return <li key={i}>{item}</li>
+          })}
+        </ul>
+      </div>
+    )
+    console.log(vdom1);
+    ReactDOM.render(vdom1,document.querySelector('#app2'))
+  </script>
+</body>
+
+</html>
